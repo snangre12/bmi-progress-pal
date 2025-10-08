@@ -32,23 +32,14 @@ serve(async (req) => {
         messages: [
           {
             role: 'system',
-            content: `You are a nutrition expert. Analyze food images and provide detailed nutritional information including calories, macronutrients (protein, carbs, fats), vitamins, and health benefits. Also provide country-specific dietary recommendations for ${country}.`
+            content: `You are a nutrition expert. Analyze food images and return a JSON object with ONLY these fields: calories (string with unit), protein (string with unit), carbs (string with unit), fats (string with unit), benefits (concise string). Keep it short and precise.`
           },
           {
             role: 'user',
             content: [
               {
                 type: 'text',
-                text: `Analyze this food image and provide:
-1. Food identification
-2. Estimated calories
-3. Macronutrients breakdown (protein, carbs, fats)
-4. Key vitamins and minerals
-5. Health benefits
-6. Dietary recommendations specific to ${country}
-7. Portion size assessment
-
-Format the response in a clear, readable way.`
+                text: `Analyze this food and return ONLY a JSON object with: calories, protein, carbs, fats, benefits. Be concise. Example: {"calories":"350 kcal","protein":"25g","carbs":"40g","fats":"12g","benefits":"Rich in protein and fiber, supports muscle growth"}`
               },
               {
                 type: 'image_url',
@@ -69,12 +60,27 @@ Format the response in a clear, readable way.`
     }
 
     const data = await response.json();
-    const analysis = data.choices?.[0]?.message?.content;
+    const content = data.choices?.[0]?.message?.content;
 
     console.log('Analysis completed successfully');
 
+    // Parse the JSON response from AI
+    let nutritionData;
+    try {
+      nutritionData = JSON.parse(content);
+    } catch (e) {
+      // Fallback if AI doesn't return valid JSON
+      nutritionData = {
+        calories: "N/A",
+        protein: "N/A",
+        carbs: "N/A",
+        fats: "N/A",
+        benefits: content || "Unable to analyze"
+      };
+    }
+
     return new Response(
-      JSON.stringify({ analysis }),
+      JSON.stringify(nutritionData),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {

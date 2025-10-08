@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Activity, Home, LineChart, Utensils, LogOut } from "lucide-react";
+import { Activity, Home, LineChart, Utensils, LogOut, Dumbbell, Salad } from "lucide-react";
 
 export const Navigation = () => {
   const location = useLocation();
@@ -19,7 +19,9 @@ export const Navigation = () => {
   const navItems = [
     { to: "/", icon: Home, label: "Dashboard" },
     { to: "/calculator", icon: Activity, label: "BMI" },
+    { to: "/workout", icon: Dumbbell, label: "Workout" },
     { to: "/nutrition", icon: Utensils, label: "Nutrition" },
+    { to: "/diet-plans", icon: Salad, label: "Diet Plans" },
     { to: "/progress", icon: LineChart, label: "Progress" },
   ];
 

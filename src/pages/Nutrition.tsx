@@ -12,7 +12,7 @@ export default function Nutrition() {
   const [country, setCountry] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string>("");
-  const [analysis, setAnalysis] = useState<string>("");
+  const [analysis, setAnalysis] = useState<any>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -50,7 +50,7 @@ export default function Nutrition() {
 
         if (error) throw error;
 
-        setAnalysis(data.analysis);
+        setAnalysis(data);
         toast({
           title: "Analysis Complete!",
           description: "Your nutrition analysis is ready",
@@ -157,8 +157,31 @@ export default function Nutrition() {
           </CardHeader>
           <CardContent>
             {analysis ? (
-              <div className="prose prose-sm max-w-none">
-                <div className="whitespace-pre-wrap text-sm leading-relaxed">{analysis}</div>
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 border rounded-lg bg-background/50">
+                    <p className="text-xs text-muted-foreground">Calories</p>
+                    <p className="text-2xl font-bold text-primary">{analysis.calories}</p>
+                  </div>
+                  <div className="p-3 border rounded-lg bg-background/50">
+                    <p className="text-xs text-muted-foreground">Protein</p>
+                    <p className="text-2xl font-bold text-accent">{analysis.protein}</p>
+                  </div>
+                  <div className="p-3 border rounded-lg bg-background/50">
+                    <p className="text-xs text-muted-foreground">Carbs</p>
+                    <p className="text-2xl font-bold text-secondary">{analysis.carbs}</p>
+                  </div>
+                  <div className="p-3 border rounded-lg bg-background/50">
+                    <p className="text-xs text-muted-foreground">Fats</p>
+                    <p className="text-2xl font-bold text-warning">{analysis.fats}</p>
+                  </div>
+                </div>
+                <div className="p-4 border rounded-lg bg-muted/30">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <span>✨</span> Benefits
+                  </h4>
+                  <p className="text-sm leading-relaxed">{analysis.benefits}</p>
+                </div>
               </div>
             ) : (
               <div className="text-center py-12 text-muted-foreground">

@@ -9,7 +9,9 @@ import { Auth } from "@/components/Auth";
 import { Navigation } from "@/components/Navigation";
 import Dashboard from "./pages/Dashboard";
 import Calculator from "./pages/Calculator";
+import Workout from "./pages/Workout";
 import Nutrition from "./pages/Nutrition";
+import DietPlans from "./pages/DietPlans";
 import Progress from "./pages/Progress";
 import NotFound from "./pages/NotFound";
 import { Loader2 } from "lucide-react";
@@ -57,7 +59,9 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/calculator" element={<Calculator />} />
+                <Route path="/workout" element={<Workout />} />
                 <Route path="/nutrition" element={<Nutrition />} />
+                <Route path="/diet-plans" element={<DietPlans />} />
                 <Route path="/progress" element={<Progress />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
