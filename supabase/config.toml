@@ -1,1 +1,7 @@
 project_id = "anglcneflnblyoushsku"
+
+[functions.analyze-nutrition]
+verify_jwt = false
+
+[functions.generate-diet-plan]
+verify_jwt = false

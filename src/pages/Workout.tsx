@@ -17,53 +17,107 @@ export default function Workout() {
   const workoutPlans = {
     lose: {
       beginner: [
-        { name: "Walking", sets: "30 min", video: "https://example.com/walking", icon: Heart, description: "Low-impact cardio to start your journey" },
-        { name: "Bodyweight Squats", sets: "3x10", video: "https://example.com/squats", icon: Dumbbell, description: "Build leg strength safely" },
-        { name: "Wall Push-ups", sets: "3x8", video: "https://example.com/pushups", icon: Dumbbell, description: "Upper body strength foundation" },
+        { name: "Walking", sets: "30 min", video: "https://www.youtube.com/watch?v=eVoEkr9P9jg", icon: Heart, description: "Low-impact cardio to start your journey" },
+        { name: "Bodyweight Squats", sets: "3x10", video: "https://www.youtube.com/watch?v=aclHkVaku9U", icon: Dumbbell, description: "Build leg strength safely" },
+        { name: "Wall Push-ups", sets: "3x8", video: "https://www.youtube.com/watch?v=XvBJN1dnPSw", icon: Dumbbell, description: "Upper body strength foundation" },
       ],
       moderate: [
-        { name: "Jogging", sets: "35 min", video: "https://example.com/jog", icon: Heart, description: "Increase calorie burn" },
-        { name: "Jump Rope", sets: "3x2 min", video: "https://example.com/rope", icon: Zap, description: "High-intensity fat burning" },
-        { name: "Burpees", sets: "3x10", video: "https://example.com/burpees", icon: Zap, description: "Full body cardio blast" },
+        { name: "Jogging", sets: "35 min", video: "https://www.youtube.com/watch?v=brFHyOtTwH4", icon: Heart, description: "Increase calorie burn" },
+        { name: "Jump Rope", sets: "3x2 min", video: "https://www.youtube.com/watch?v=FJmRQ5iTXKE", icon: Zap, description: "High-intensity fat burning" },
+        { name: "Burpees", sets: "3x10", video: "https://www.youtube.com/watch?v=JZQA08SlJnM", icon: Zap, description: "Full body cardio blast" },
       ],
       advanced: [
-        { name: "HIIT Running", sets: "30 min", video: "https://example.com/hiit", icon: Zap, description: "Maximum fat burn intervals" },
-        { name: "Box Jumps", sets: "4x12", video: "https://example.com/box", icon: Zap, description: "Explosive power training" },
-        { name: "Mountain Climbers", sets: "4x20", video: "https://example.com/climbers", icon: Zap, description: "Core and cardio combo" },
+        { name: "HIIT Running", sets: "30 min", video: "https://www.youtube.com/watch?v=ml6cT4AZdqI", icon: Zap, description: "Maximum fat burn intervals" },
+        { name: "Box Jumps", sets: "4x12", video: "https://www.youtube.com/watch?v=NBY9-kTuHEk", icon: Zap, description: "Explosive power training" },
+        { name: "Mountain Climbers", sets: "4x20", video: "https://www.youtube.com/watch?v=nmwgirgXLYM", icon: Zap, description: "Core and cardio combo" },
       ],
     },
     gain: {
       beginner: [
-        { name: "Dumbbell Curls", sets: "3x12", video: "https://example.com/curls", icon: Dumbbell, description: "Build arm muscle" },
-        { name: "Goblet Squats", sets: "3x10", video: "https://example.com/goblet", icon: Dumbbell, description: "Leg muscle growth" },
-        { name: "Bench Press", sets: "3x8", video: "https://example.com/bench", icon: Dumbbell, description: "Chest strength builder" },
+        { name: "Dumbbell Curls", sets: "3x12", video: "https://www.youtube.com/watch?v=ykJmrZ5v0Oo", icon: Dumbbell, description: "Build arm muscle" },
+        { name: "Goblet Squats", sets: "3x10", video: "https://www.youtube.com/watch?v=MeIiIdhvXT4", icon: Dumbbell, description: "Leg muscle growth" },
+        { name: "Bench Press", sets: "3x8", video: "https://www.youtube.com/watch?v=rT7DgCr-3pg", icon: Dumbbell, description: "Chest strength builder" },
       ],
       moderate: [
-        { name: "Barbell Squats", sets: "4x8-10", video: "https://example.com/barbell", icon: Dumbbell, description: "Compound leg builder" },
-        { name: "Pull-ups", sets: "3x6-8", video: "https://example.com/pullup", icon: Dumbbell, description: "Back and bicep growth" },
-        { name: "Deadlifts", sets: "3x6", video: "https://example.com/dead", icon: Dumbbell, description: "Full body strength" },
+        { name: "Barbell Squats", sets: "4x8-10", video: "https://www.youtube.com/watch?v=ultWZbUMPL8", icon: Dumbbell, description: "Compound leg builder" },
+        { name: "Pull-ups", sets: "3x6-8", video: "https://www.youtube.com/watch?v=eGo4IYlbE5g", icon: Dumbbell, description: "Back and bicep growth" },
+        { name: "Deadlifts", sets: "3x6", video: "https://www.youtube.com/watch?v=op9kVnSso6Q", icon: Dumbbell, description: "Full body strength" },
       ],
       advanced: [
-        { name: "Weighted Squats", sets: "5x5", video: "https://example.com/weighted", icon: Zap, description: "Maximum leg mass" },
-        { name: "Weighted Pull-ups", sets: "4x6", video: "https://example.com/wpullup", icon: Zap, description: "Advanced back development" },
-        { name: "Clean & Press", sets: "4x5", video: "https://example.com/clean", icon: Zap, description: "Olympic power builder" },
+        { name: "Weighted Squats", sets: "5x5", video: "https://www.youtube.com/watch?v=SW_C1A-rejs", icon: Zap, description: "Maximum leg mass" },
+        { name: "Weighted Pull-ups", sets: "4x6", video: "https://www.youtube.com/watch?v=tB3X4TjTIes", icon: Zap, description: "Advanced back development" },
+        { name: "Clean & Press", sets: "4x5", video: "https://www.youtube.com/watch?v=KwYJTpQ_x5A", icon: Zap, description: "Olympic power builder" },
       ],
     },
     maintain: {
       beginner: [
-        { name: "Brisk Walking", sets: "30 min", video: "https://example.com/walk", icon: Heart, description: "Daily movement foundation" },
-        { name: "Yoga Flow", sets: "20 min", video: "https://example.com/yoga", icon: Heart, description: "Flexibility and balance" },
-        { name: "Light Stretching", sets: "15 min", video: "https://example.com/stretch", icon: Heart, description: "Mobility maintenance" },
+        { name: "Brisk Walking", sets: "30 min", video: "https://www.youtube.com/watch?v=eVoEkr9P9jg", icon: Heart, description: "Daily movement foundation" },
+        { name: "Yoga Flow", sets: "20 min", video: "https://www.youtube.com/watch?v=v7AYKMP6rOE", icon: Heart, description: "Flexibility and balance" },
+        { name: "Light Stretching", sets: "15 min", video: "https://www.youtube.com/watch?v=g_tea8ZNk5A", icon: Heart, description: "Mobility maintenance" },
       ],
       moderate: [
-        { name: "Cycling", sets: "40 min", video: "https://example.com/cycle", icon: Heart, description: "Steady cardio maintenance" },
-        { name: "Pilates", sets: "30 min", video: "https://example.com/pilates", icon: Dumbbell, description: "Core stability work" },
-        { name: "Swimming", sets: "30 min", video: "https://example.com/swim", icon: Heart, description: "Full body conditioning" },
+        { name: "Cycling", sets: "40 min", video: "https://www.youtube.com/watch?v=S-kHH5l6lS8", icon: Heart, description: "Steady cardio maintenance" },
+        { name: "Pilates", sets: "30 min", video: "https://www.youtube.com/watch?v=K56Z12XRo8s", icon: Dumbbell, description: "Core stability work" },
+        { name: "Swimming", sets: "30 min", video: "https://www.youtube.com/watch?v=5HLW2AI1Ink", icon: Heart, description: "Full body conditioning" },
       ],
       advanced: [
-        { name: "Running", sets: "45 min", video: "https://example.com/run", icon: Zap, description: "Endurance maintenance" },
-        { name: "CrossFit WOD", sets: "30 min", video: "https://example.com/crossfit", icon: Zap, description: "Varied functional fitness" },
-        { name: "Circuit Training", sets: "40 min", video: "https://example.com/circuit", icon: Zap, description: "Full body workout" },
+        { name: "Running", sets: "45 min", video: "https://www.youtube.com/watch?v=wRkeBVMQSgg", icon: Zap, description: "Endurance maintenance" },
+        { name: "CrossFit WOD", sets: "30 min", video: "https://www.youtube.com/watch?v=mlVrkiCoKkg", icon: Zap, description: "Varied functional fitness" },
+        { name: "Circuit Training", sets: "40 min", video: "https://www.youtube.com/watch?v=R5oJFQ-eJUI", icon: Zap, description: "Full body workout" },
+      ],
+    },
+  };
+
+  const lowImpactWorkouts = {
+    lose: {
+      beginner: [
+        { name: "Water Walking", sets: "25 min", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", icon: Heart, description: "Zero impact cardio for joints" },
+        { name: "Seated Exercises", sets: "3x10", video: "https://www.youtube.com/watch?v=Gq3A8M0d_gk", icon: Dumbbell, description: "Safe strength training" },
+        { name: "Gentle Stretching", sets: "15 min", video: "https://www.youtube.com/watch?v=g_tea8ZNk5A", icon: Heart, description: "Flexibility without stress" },
+      ],
+      moderate: [
+        { name: "Swimming", sets: "30 min", video: "https://www.youtube.com/watch?v=5HLW2AI1Ink", icon: Heart, description: "Full body low-impact cardio" },
+        { name: "Resistance Bands", sets: "3x12", video: "https://www.youtube.com/watch?v=OPcwfFOIQmM", icon: Dumbbell, description: "Joint-friendly strength" },
+        { name: "Elliptical", sets: "25 min", video: "https://www.youtube.com/watch?v=pFdONTdqAUg", icon: Heart, description: "Smooth cardio motion" },
+      ],
+      advanced: [
+        { name: "Rowing Machine", sets: "30 min", video: "https://www.youtube.com/watch?v=zQ82RYIFLN8", icon: Heart, description: "Low-impact full body" },
+        { name: "TRX Suspension", sets: "4x10", video: "https://www.youtube.com/watch?v=RtkPZGVgSF4", icon: Dumbbell, description: "Controlled resistance" },
+        { name: "Bike Intervals", sets: "25 min", video: "https://www.youtube.com/watch?v=S-kHH5l6lS8", icon: Zap, description: "Cardio without impact" },
+      ],
+    },
+    gain: {
+      beginner: [
+        { name: "Isometric Holds", sets: "3x30s", video: "https://www.youtube.com/watch?v=qfjfZFFt3Hs", icon: Dumbbell, description: "Static muscle building" },
+        { name: "Light Resistance Bands", sets: "3x15", video: "https://www.youtube.com/watch?v=OPcwfFOIQmM", icon: Dumbbell, description: "Safe progressive overload" },
+        { name: "Machine Exercises", sets: "3x12", video: "https://www.youtube.com/watch?v=2yjwXTZQDDI", icon: Dumbbell, description: "Guided strength training" },
+      ],
+      moderate: [
+        { name: "Cable Machines", sets: "4x10", video: "https://www.youtube.com/watch?v=YvpD5V3bLz4", icon: Dumbbell, description: "Controlled muscle building" },
+        { name: "Swimming Resistance", sets: "3x12", video: "https://www.youtube.com/watch?v=5HLW2AI1Ink", icon: Dumbbell, description: "Water resistance training" },
+        { name: "TRX Rows", sets: "4x8", video: "https://www.youtube.com/watch?v=RtkPZGVgSF4", icon: Dumbbell, description: "Joint-safe back work" },
+      ],
+      advanced: [
+        { name: "Tempo Training", sets: "4x6", video: "https://www.youtube.com/watch?v=6IY-fMy5O5o", icon: Dumbbell, description: "Slow controlled lifts" },
+        { name: "Accommodating Resistance", sets: "4x8", video: "https://www.youtube.com/watch?v=OPcwfFOIQmM", icon: Dumbbell, description: "Band-assisted lifting" },
+        { name: "Eccentric Training", sets: "3x5", video: "https://www.youtube.com/watch?v=MMV0A9taPM8", icon: Zap, description: "Controlled lowering focus" },
+      ],
+    },
+    maintain: {
+      beginner: [
+        { name: "Water Aerobics", sets: "30 min", video: "https://www.youtube.com/watch?v=Ll-XH08ZMXQ", icon: Heart, description: "Fun low-impact exercise" },
+        { name: "Chair Yoga", sets: "20 min", video: "https://www.youtube.com/watch?v=6NZNmW8ndKQ", icon: Heart, description: "Accessible flexibility" },
+        { name: "Tai Chi", sets: "20 min", video: "https://www.youtube.com/watch?v=6w7IS8_UzHM", icon: Heart, description: "Gentle movement practice" },
+      ],
+      moderate: [
+        { name: "Bike Riding", sets: "35 min", video: "https://www.youtube.com/watch?v=S-kHH5l6lS8", icon: Heart, description: "Joint-friendly cardio" },
+        { name: "Aqua Jogging", sets: "25 min", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", icon: Heart, description: "Water-based running" },
+        { name: "Gentle Pilates", sets: "30 min", video: "https://www.youtube.com/watch?v=K56Z12XRo8s", icon: Dumbbell, description: "Core without strain" },
+      ],
+      advanced: [
+        { name: "Rowing", sets: "40 min", video: "https://www.youtube.com/watch?v=zQ82RYIFLN8", icon: Heart, description: "Full body conditioning" },
+        { name: "Elliptical HIIT", sets: "30 min", video: "https://www.youtube.com/watch?v=pFdONTdqAUg", icon: Zap, description: "Intense but safe cardio" },
+        { name: "TRX Circuits", sets: "35 min", video: "https://www.youtube.com/watch?v=RtkPZGVgSF4", icon: Zap, description: "Suspension training flow" },
       ],
     },
   };
@@ -78,23 +132,29 @@ export default function Workout() {
     { day: "Sunday", focus: "Rest Day", duration: "-" },
   ];
 
-  const currentWorkouts = workoutPlans[goal as keyof typeof workoutPlans][level as keyof typeof workoutPlans.lose] || workoutPlans.maintain.beginner;
+  const hasInjuries = injuries.trim().length > 0;
+  const currentWorkouts = hasInjuries 
+    ? lowImpactWorkouts[goal as keyof typeof lowImpactWorkouts][level as keyof typeof lowImpactWorkouts.lose] || lowImpactWorkouts.maintain.beginner
+    : workoutPlans[goal as keyof typeof workoutPlans][level as keyof typeof workoutPlans.lose] || workoutPlans.maintain.beginner;
 
   const getInjuryAdjustments = () => {
-    if (!injuries.trim()) return null;
+    if (!hasInjuries) return null;
     return (
       <Card className="shadow-soft border-warning/50 bg-warning/5">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-warning">
             <AlertCircle className="h-5 w-5" />
-            Injury Considerations
+            Modified Plan for Your Condition
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
           <p><strong>Your Input:</strong> {injuries}</p>
           <p className="text-muted-foreground">
-            💡 <strong>Recommendations:</strong> Avoid high-impact exercises. Focus on low-impact movements, 
-            consult a physical therapist, and prioritize proper form. Consider swimming or cycling as alternatives.
+            ✅ <strong>Your workout plan has been automatically adjusted to low-impact exercises</strong> that are safer for your condition. 
+            These exercises minimize stress on joints and injured areas while still providing effective training.
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            💡 Always consult with a healthcare professional before starting any new exercise program, especially with injuries.
           </p>
         </CardContent>
       </Card>
@@ -212,7 +272,9 @@ export default function Workout() {
               <Dumbbell className="h-5 w-5 text-primary" />
               Custom Workout Plan
             </CardTitle>
-            <CardDescription>Exercises for your {level} level - {goal === "lose" ? "Weight Loss" : goal === "gain" ? "Muscle Gain" : "Maintenance"}</CardDescription>
+            <CardDescription>
+              {hasInjuries ? "Low-impact exercises " : "Exercises "}for your {level} level - {goal === "lose" ? "Weight Loss" : goal === "gain" ? "Muscle Gain" : "Maintenance"}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">

@@ -8,12 +8,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Apple, Salad, Coffee, Pizza, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function DietPlans() {
   const [country, setCountry] = useState("");
   const [dietPattern, setDietPattern] = useState("");
   const [availableFoods, setAvailableFoods] = useState("");
   const [loading, setLoading] = useState(false);
+  const [mealPlan, setMealPlan] = useState<any>(null);
   const [preferences, setPreferences] = useState({
     vegetarian: false,
     vegan: false,
@@ -24,7 +26,7 @@ export default function DietPlans() {
   });
   const { toast } = useToast();
 
-  const handleGeneratePlan = () => {
+  const handleGeneratePlan = async () => {
     if (!country || !dietPattern) {
       toast({
         title: "Missing Information",
@@ -35,33 +37,35 @@ export default function DietPlans() {
     }
 
     setLoading(true);
-    // Simulate plan generation
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const { data, error } = await supabase.functions.invoke('generate-diet-plan', {
+        body: { country, dietPattern, preferences, availableFoods }
+      });
+
+      if (error) throw error;
+
+      setMealPlan(data);
       toast({
         title: "Diet Plan Generated!",
         description: "Your personalized meal plan is ready",
       });
-    }, 1500);
+    } catch (error) {
+      console.error('Error generating meal plan:', error);
+      toast({
+        title: "Generation Failed",
+        description: "Could not generate meal plan. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const sampleMealPlan = {
-    breakfast: [
-      { meal: "Oatmeal with Berries", calories: 350, protein: "12g", carbs: "45g", fats: "8g" },
-      { meal: "Greek Yogurt Parfait", calories: 280, protein: "20g", carbs: "30g", fats: "6g" },
-    ],
-    lunch: [
-      { meal: "Grilled Chicken Salad", calories: 420, protein: "35g", carbs: "25g", fats: "18g" },
-      { meal: "Quinoa Buddha Bowl", calories: 450, protein: "18g", carbs: "55g", fats: "15g" },
-    ],
-    dinner: [
-      { meal: "Salmon with Vegetables", calories: 520, protein: "40g", carbs: "30g", fats: "22g" },
-      { meal: "Lentil Curry with Rice", calories: 480, protein: "22g", carbs: "65g", fats: "12g" },
-    ],
-    snacks: [
-      { meal: "Mixed Nuts", calories: 180, protein: "6g", carbs: "8g", fats: "15g" },
-      { meal: "Apple with Almond Butter", calories: 200, protein: "4g", carbs: "25g", fats: "10g" },
-    ],
+  const displayMealPlan = mealPlan || {
+    breakfast: [],
+    lunch: [],
+    dinner: [],
+    snacks: [],
   };
 
   return (
@@ -176,7 +180,10 @@ export default function DietPlans() {
               <CardDescription>Start your day right</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {sampleMealPlan.breakfast.map((item, idx) => (
+              {displayMealPlan.breakfast.length === 0 && (
+                <p className="text-muted-foreground text-sm">Generate a meal plan to see breakfast options</p>
+              )}
+              {displayMealPlan.breakfast.map((item: any, idx: number) => (
                 <div key={idx} className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-semibold">{item.meal}</h4>
@@ -201,7 +208,10 @@ export default function DietPlans() {
               <CardDescription>Midday fuel</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {sampleMealPlan.lunch.map((item, idx) => (
+              {displayMealPlan.lunch.length === 0 && (
+                <p className="text-muted-foreground text-sm">Generate a meal plan to see lunch options</p>
+              )}
+              {displayMealPlan.lunch.map((item: any, idx: number) => (
                 <div key={idx} className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-semibold">{item.meal}</h4>
@@ -226,7 +236,10 @@ export default function DietPlans() {
               <CardDescription>Evening nutrition</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {sampleMealPlan.dinner.map((item, idx) => (
+              {displayMealPlan.dinner.length === 0 && (
+                <p className="text-muted-foreground text-sm">Generate a meal plan to see dinner options</p>
+              )}
+              {displayMealPlan.dinner.map((item: any, idx: number) => (
                 <div key={idx} className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-semibold">{item.meal}</h4>
@@ -251,7 +264,10 @@ export default function DietPlans() {
               <CardDescription>Healthy between-meal choices</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {sampleMealPlan.snacks.map((item, idx) => (
+              {displayMealPlan.snacks.length === 0 && (
+                <p className="text-muted-foreground text-sm">Generate a meal plan to see snack options</p>
+              )}
+              {displayMealPlan.snacks.map((item: any, idx: number) => (
                 <div key={idx} className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-semibold">{item.meal}</h4>

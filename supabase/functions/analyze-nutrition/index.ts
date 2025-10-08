@@ -39,7 +39,17 @@ serve(async (req) => {
             content: [
               {
                 type: 'text',
-                text: `Analyze this food and return ONLY a JSON object with: calories, protein, carbs, fats, benefits. Be concise. Example: {"calories":"350 kcal","protein":"25g","carbs":"40g","fats":"12g","benefits":"Rich in protein and fiber, supports muscle growth"}`
+                text: `Analyze this food image and return ONLY a valid JSON object. Be precise with nutritional values.
+
+REQUIRED FORMAT (return ONLY this, no other text):
+{"calories":"350 kcal","protein":"25g","carbs":"40g","fats":"12g","benefits":"Rich in protein and fiber"}
+
+Rules:
+- calories must include "kcal" unit
+- protein, carbs, fats must include "g" unit  
+- All values must be realistic estimates
+- benefits should be one short sentence (max 10 words)
+- Return ONLY the JSON, nothing else`
               },
               {
                 type: 'image_url',
@@ -67,15 +77,26 @@ serve(async (req) => {
     // Parse the JSON response from AI
     let nutritionData;
     try {
-      nutritionData = JSON.parse(content);
+      // Clean the response - remove markdown code blocks if present
+      let cleanContent = content.trim();
+      if (cleanContent.startsWith('```')) {
+        cleanContent = cleanContent.replace(/```json\n?/g, '').replace(/```\n?/g, '');
+      }
+      nutritionData = JSON.parse(cleanContent);
+      
+      // Validate required fields
+      if (!nutritionData.calories || !nutritionData.protein || !nutritionData.carbs || !nutritionData.fats) {
+        throw new Error('Missing required fields');
+      }
     } catch (e) {
-      // Fallback if AI doesn't return valid JSON
+      console.error('Failed to parse nutrition data:', e, 'Content:', content);
+      // Fallback with better defaults
       nutritionData = {
-        calories: "N/A",
-        protein: "N/A",
-        carbs: "N/A",
-        fats: "N/A",
-        benefits: content || "Unable to analyze"
+        calories: "Unable to estimate",
+        protein: "Unable to estimate",
+        carbs: "Unable to estimate",
+        fats: "Unable to estimate",
+        benefits: "Please try uploading a clearer food image"
       };
     }
 
